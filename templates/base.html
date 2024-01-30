@@ -1,0 +1,53 @@
+<!--Candidate Concept #2 Templates: An example of a template file-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+
+<body>
+    <div style="margin-top: 50px;" class="ui container">
+         <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+        <h1 class="ui center aligned header">To Do App</h1>
+
+        <form class="ui form" action="/add" method="post">
+            <div class="field">
+                <label>Todo Title</label>
+                <input type="text" name="title" placeholder="Enter Todo..."><br>
+            </div>
+            <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+            <button class="ui blue button" type="submit">Add</button>
+        </form>
+
+        <hr>
+        <!--Candidate Concept #2 Templates: An example of template syntax-->
+        {% for todo in todo_list %}
+         <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+        <div class="ui segment">
+             <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+            <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
+
+            {% if todo.complete == False %}
+             <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+            <span class="ui gray label">Not Complete</span>
+            {% else %}
+             <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+            <span class="ui green label">Completed</span>
+            {% endif %}
+             <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+            <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
+             <!--Candidate Concept #3 Styling: Here we are using Semantic UI for styling-->
+            <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
